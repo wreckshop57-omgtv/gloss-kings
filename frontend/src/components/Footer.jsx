@@ -102,9 +102,7 @@ export default function Footer() {
               Hours
             </h4>
             <ul className="space-y-3 text-sm text-white/70">
-              <li className="flex justify-between"><span>Mon — Fri</span><span>8a · 7p</span></li>
-              <li className="flex justify-between"><span>Saturday</span><span>9a · 6p</span></li>
-              <li className="flex justify-between"><span>Sunday</span><span>By Appt.</span></li>
+              <li className="flex justify-between"><span>Services are provided by appointment ONLY.</span></li>
             </ul>
             <p className="mt-6 text-[0.7rem] tracking-[0.2em] uppercase text-white/40">
               Mobile service available
