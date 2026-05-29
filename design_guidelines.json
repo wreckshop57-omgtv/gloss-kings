@@ -1,0 +1,123 @@
+{
+  "theme": "dark",
+  "archetype": "Archetype 5: Luxury",
+  "typography": {
+    "heading_font": "Cormorant Garamond",
+    "body_font": "Outfit",
+    "accent_font": "Outfit",
+    "scale": {
+      "h1": "text-5xl sm:text-6xl lg:text-7xl tracking-tighter", 
+      "h2": "text-3xl sm:text-4xl lg:text-5xl tracking-tight",
+      "h3": "text-2xl sm:text-3xl",
+      "body": "text-base sm:text-lg leading-relaxed",
+      "overline": "text-xs tracking-[0.2em] uppercase font-bold"
+    }
+  },
+  "colors": {
+    "background": {
+      "primary": "#050505",
+      "secondary": "#0A0A0C",
+      "tertiary": "#111111"
+    },
+    "text": {
+      "primary": "#FFFFFF",
+      "secondary": "#A3A3A3",
+      "accent": "#D4AF37"
+    },
+    "brand": {
+      "gold": "#D4AF37",
+      "gold_light": "#FFD700",
+      "chrome": "#E0E0E0",
+      "black": "#000000"
+    },
+    "borders": {
+      "default": "rgba(255, 255, 255, 0.1)",
+      "accent": "rgba(212, 175, 55, 0.3)"
+    }
+  },
+  "layout_and_spacing": {
+    "container_padding": "px-6 md:px-12 lg:px-24",
+    "section_spacing": "py-24 md:py-32",
+    "grid_strategy": "Bento Grid (Mode A) for Services, Asymmetric overlaps for About section. Heavy use of negative space.",
+    "border_radius": "rounded-none or rounded-sm for a sharp, aggressive automotive look"
+  },
+  "surfaces_and_effects": {
+    "glassmorphism": "backdrop-blur-xl bg-black/60 border-b border-white/10",
+    "cards": "bg-[#0A0A0C] border border-white/5 hover:border-[#D4AF37]/40 transition-colors duration-500",
+    "glow": "drop-shadow-[0_0_15px_rgba(212,175,55,0.3)]",
+    "texture": "Subtle SVG noise overlay fixed on background to remove digital flatness"
+  },
+  "components": {
+    "buttons": "bg-transparent border border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black transition-all duration-300 uppercase tracking-widest text-sm py-4 px-8",
+    "primary_cta": "bg-gradient-to-r from-[#D4AF37] to-[#FFD700] text-black font-bold uppercase tracking-widest hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] transition-all",
+    "inputs": "bg-[#050505] border-white/10 text-white focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37] rounded-none h-12",
+    "3d_hero": "React Three Fiber canvas containing a floating 3D plane or extruded shape with the Gloss Kings logo texture, slowly rotating on the Y axis, with golden point lights and environment mapping for reflections."
+  },
+  "media": {
+    "logo": {
+      "url": "https://customer-assets.emergentagent.com/job_73674b8e-f3bf-40a4-ac5d-79e1db85f935/artifacts/g5ozb603_1000005315.png",
+      "description": "Gloss Kings Shield Logo"
+    },
+    "hero_background": {
+      "url": "https://static.prod-images.emergentagent.com/jobs/73674b8e-f3bf-40a4-ac5d-79e1db85f935/images/25cfa1f0027dceeb736478bff1b1541f0a4838a877718c71151f3327af385bf2.png",
+      "description": "Cinematic dark supercar studio shot"
+    },
+    "services": [
+      {
+        "category": "Exterior Detailing / Ceramic Coating",
+        "url": "https://static.prod-images.emergentagent.com/jobs/73674b8e-f3bf-40a4-ac5d-79e1db85f935/images/4634ce9abb7958074be7c625c5fdb5173357e75afac1b30a71b04c55fd6dbb0a.png"
+      },
+      {
+        "category": "Interior Deep Clean / Leather",
+        "url": "https://static.prod-images.emergentagent.com/jobs/73674b8e-f3bf-40a4-ac5d-79e1db85f935/images/d33e78bb99c19a315f5b411809e7977f045a1641c12681f171c2915c13bc5877.png"
+      },
+      {
+        "category": "Paint Correction / Polishing",
+        "url": "https://static.prod-images.emergentagent.com/jobs/73674b8e-f3bf-40a4-ac5d-79e1db85f935/images/739a90e6a73ce9a7f0d0df006e5e0df393f242a7b9e4092889b65da009c67425.png"
+      }
+    ],
+    "gallery": [
+      {
+        "url": "https://images.unsplash.com/photo-1608259243654-70c070e0f6ed?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2OTV8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBjYXIlMjBpbnRlcmlvciUyMGxlYXRoZXIlMjBjbGVhbnxlbnwwfHx8fDE3ODAwMTI4NTJ8MA&ixlib=rb-4.1.0&q=85",
+        "description": "Luxury interior"
+      },
+      {
+        "url": "https://images.pexels.com/photos/18320398/pexels-photo-18320398.jpeg",
+        "description": "Black sports car sleek"
+      }
+    ]
+  },
+  "animation_guidelines": {
+    "hero": "Parallax effect on background image during scroll. 3D logo shield rotates continuously but reacts slightly to mouse movement.",
+    "scroll_reveal": "Framer Motion staggered fade-up (y: 30, opacity: 0 -> 1) for text and service cards.",
+    "hover": "Subtle scale up (1.02) and border color transition to gold on interactive cards."
+  },
+  "content_strategy": {
+    "business_info": {
+      "phone": "346-507-6085",
+      "email": "Glosskings.autodetailing1012@gmail.com",
+      "instagram": "glosskings_autodetailing"
+    },
+    "sections": [
+      "Hero: 3D Logo, 'Experience Royal Treatment', Book Now CTA",
+      "Why Gloss Kings: Process, Precision, Expertise",
+      "Services: Exterior & Interior Showcases",
+      "Gallery: Before/After & Visuals",
+      "Testimonials: Client reviews",
+      "Booking: Request a Quote Form",
+      "Footer: Contact Info & Socials"
+    ]
+  },
+  "technical_requirements": {
+    "libraries": [
+      "framer-motion",
+      "lucide-react",
+      "@react-three/fiber",
+      "@react-three/drei",
+      "three",
+      "lenis"
+    ],
+    "testing": "All interactive elements MUST have data-testid attributes (e.g., data-testid='quote-submit-button')."
+  },
+  "instructions_to_main_agent": "Use dark luxury archetype. Implement React Three Fiber for the hero section utilizing the provided logo URL as a texture on a 3D primitive (like a thin cylinder or custom shape to act as a shield/coin). Layer cinematic lighting. Keep backgrounds nearly pure black with subtle noise. Build a high-end booking form using Shadcn inputs but customized to match the dark/gold theme. Ensure 'data-testid' is used properly across CTAs and form fields."
+}
