@@ -2,6 +2,7 @@ import React from "react";
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
+import Pricing from "@/components/Pricing";
 import Process from "@/components/Process";
 import Gallery from "@/components/Gallery";
 import Testimonials from "@/components/Testimonials";
@@ -14,6 +15,7 @@ export default function Landing() {
       <Nav />
       <Hero />
       <Services />
+      <Pricing />
       <Process />
       <Gallery />
       <Testimonials />

@@ -3,6 +3,7 @@ export const TEST_IDS = {
     container: 'site-nav',
     logo: 'nav-logo',
     linkServices: 'nav-link-services',
+    linkPricing: 'nav-link-pricing',
     linkProcess: 'nav-link-process',
     linkGallery: 'nav-link-gallery',
     linkContact: 'nav-link-contact',
@@ -22,6 +23,14 @@ export const TEST_IDS = {
     card: (key) => `service-card-${key}`,
   },
   process: { section: 'process-section' },
+  pricing: {
+    section: 'pricing-section',
+    vehicleToggle: 'pricing-vehicle-toggle',
+    vehicleButton: (key) => `pricing-vehicle-${key}`,
+    tier: (key) => `pricing-tier-${key}`,
+    cta: (key) => `pricing-cta-${key}`,
+    addons: 'pricing-addons',
+  },
   gallery: { section: 'gallery-section' },
   testimonials: { section: 'testimonials-section' },
   quote: {

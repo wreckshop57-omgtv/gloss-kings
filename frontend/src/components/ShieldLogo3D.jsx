@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import { TEST_IDS } from "@/constants/testIds";
 
@@ -6,54 +6,124 @@ const LOGO_URL =
   "https://customer-assets.emergentagent.com/job_73674b8e-f3bf-40a4-ac5d-79e1db85f935/artifacts/g5ozb603_1000005315.png";
 
 /**
- * Cinematic 3D shield using CSS 3D transforms.
- * - Auto-rotates slowly on Y axis with subtle X wobble
- * - Reacts to mouse / pointer position
- * - Gold sweeping highlight overlay
- * - Floating particles + reflection floor
+ * Drag-to-spin 3D shield. CSS 3D + framer-motion.
+ * - Click and drag to spin freely in any direction
+ * - On release, momentum carries it and decays into gentle auto-rotation
+ * - Hover (no drag) gives subtle mouse-follow tilt
  */
 const ShieldLogo3D = () => {
   const ref = useRef(null);
-  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const rotRef = useRef({ x: 0, y: 0, vx: 0, vy: 0 });
+  const dragRef = useRef({ dragging: false, lastX: 0, lastY: 0, hoverX: 0, hoverY: 0 });
+  const [rot, setRot] = useState({ x: 0, y: 0 });
+  const [isDragging, setIsDragging] = useState(false);
+  const [hasInteracted, setHasInteracted] = useState(false);
 
-  // Auto-rotation tick
+  const tick = useCallback(() => {
+    const r = rotRef.current;
+    const d = dragRef.current;
+
+    if (d.dragging) {
+      // While dragging, rotation is set directly via pointer move
+    } else {
+      // Apply velocity (momentum)
+      r.x += r.vx;
+      r.y += r.vy;
+      // Damping
+      r.vx *= 0.95;
+      r.vy *= 0.95;
+
+      // Auto-rotate when nearly stopped (gentle idle motion)
+      if (!hasInteracted) {
+        const t = performance.now() / 1000;
+        r.y = Math.sin(t * 0.55) * 18 + d.hoverX * 12;
+        r.x = Math.sin(t * 0.4) * 6 + d.hoverY * -12;
+      } else if (Math.abs(r.vx) < 0.05 && Math.abs(r.vy) < 0.05) {
+        // Idle drift toward 0 with mouse-follow influence
+        r.y += (d.hoverX * 12 - r.y) * 0.02;
+        r.x += (d.hoverY * -12 - r.x) * 0.02;
+      }
+    }
+
+    setRot({ x: r.x, y: r.y });
+    rafRef.current = requestAnimationFrame(tick);
+  }, [hasInteracted]);
+
+  const rafRef = useRef();
   useEffect(() => {
-    let raf;
-    let t0 = performance.now();
-    const tick = (t) => {
-      const elapsed = (t - t0) / 1000;
-      const baseY = Math.sin(elapsed * 0.55) * 18; // gentle rotation
-      const baseX = Math.sin(elapsed * 0.4) * 6;
-      setTilt((prev) => ({
-        x: baseX + prev.mx * 12,
-        y: baseY + prev.my * 18,
-        mx: prev.mx ?? 0,
-        my: prev.my ?? 0,
-      }));
-      raf = requestAnimationFrame(tick);
-    };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, []);
+    rafRef.current = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(rafRef.current);
+  }, [tick]);
 
-  const handleMove = (e) => {
-    const rect = ref.current?.getBoundingClientRect();
-    if (!rect) return;
-    const mx = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
-    const my = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
-    setTilt((prev) => ({ ...prev, mx, my: -my }));
+  const onPointerDown = (e) => {
+    e.currentTarget.setPointerCapture?.(e.pointerId);
+    dragRef.current.dragging = true;
+    dragRef.current.lastX = e.clientX;
+    dragRef.current.lastY = e.clientY;
+    rotRef.current.vx = 0;
+    rotRef.current.vy = 0;
+    setIsDragging(true);
+    setHasInteracted(true);
   };
 
-  const handleLeave = () => setTilt((prev) => ({ ...prev, mx: 0, my: 0 }));
+  const onPointerMove = (e) => {
+    const rect = ref.current?.getBoundingClientRect();
+    if (rect) {
+      // hover tracking (mouse follow when not dragging)
+      dragRef.current.hoverX = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
+      dragRef.current.hoverY = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+    }
+
+    if (!dragRef.current.dragging) return;
+
+    const dx = e.clientX - dragRef.current.lastX;
+    const dy = e.clientY - dragRef.current.lastY;
+    dragRef.current.lastX = e.clientX;
+    dragRef.current.lastY = e.clientY;
+
+    // Sensitivity
+    const dyRot = dx * 0.5;
+    const dxRot = -dy * 0.5;
+
+    rotRef.current.y += dyRot;
+    rotRef.current.x += dxRot;
+    // store velocity for momentum
+    rotRef.current.vx = dxRot;
+    rotRef.current.vy = dyRot;
+  };
+
+  const onPointerUp = (e) => {
+    e.currentTarget.releasePointerCapture?.(e.pointerId);
+    dragRef.current.dragging = false;
+    setIsDragging(false);
+  };
+
+  const onPointerLeave = () => {
+    dragRef.current.hoverX = 0;
+    dragRef.current.hoverY = 0;
+  };
+
+  const onClickSpin = () => {
+    // Quick double-tap spin trick: kick a 360 spin
+    rotRef.current.vy += 25;
+    setHasInteracted(true);
+  };
 
   return (
     <div
       ref={ref}
       data-testid={TEST_IDS.hero.shieldCanvas}
-      onPointerMove={handleMove}
-      onPointerLeave={handleLeave}
-      className="relative w-full h-full flex items-center justify-center"
-      style={{ perspective: "1400px" }}
+      onPointerDown={onPointerDown}
+      onPointerMove={onPointerMove}
+      onPointerUp={onPointerUp}
+      onPointerCancel={onPointerUp}
+      onPointerLeave={onPointerLeave}
+      onDoubleClick={onClickSpin}
+      className="relative w-full h-full flex items-center justify-center select-none touch-none"
+      style={{
+        perspective: "1400px",
+        cursor: isDragging ? "grabbing" : "grab",
+      }}
     >
       {/* Particles */}
       <div className="absolute inset-0 pointer-events-none">
@@ -79,20 +149,35 @@ const ShieldLogo3D = () => {
         })}
       </div>
 
-      {/* Shield wrapper - 3D rotation */}
-      <motion.div
-        animate={{
-          rotateY: tilt.y,
-          rotateX: tilt.x,
-        }}
-        transition={{ type: "spring", stiffness: 60, damping: 18, mass: 0.6 }}
+      {/* Drag hint */}
+      {!hasInteracted && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: [0, 1, 1, 0] }}
+          transition={{ duration: 4, delay: 1.6, times: [0, 0.2, 0.85, 1] }}
+          className="absolute bottom-2 left-1/2 -translate-x-1/2 z-20 pointer-events-none flex items-center gap-2 px-3 py-1.5 border border-[#D4AF37]/30 bg-black/60 backdrop-blur-sm"
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" strokeWidth="2">
+            <path d="M9 11l3-3 3 3M9 13l3 3 3-3" />
+            <circle cx="12" cy="12" r="10" />
+          </svg>
+          <span className="text-[0.6rem] tracking-[0.3em] uppercase text-[#D4AF37]">
+            Drag to Spin · Double-tap
+          </span>
+        </motion.div>
+      )}
+
+      {/* Shield wrapper - 3D rotation (no spring, direct for responsive drag) */}
+      <div
         style={{
           transformStyle: "preserve-3d",
           willChange: "transform",
+          transform: `rotateX(${rot.x}deg) rotateY(${rot.y}deg)`,
+          transition: isDragging ? "none" : "transform 80ms linear",
         }}
         className="relative shield-glow"
       >
-        {/* Back glow layer (further back) */}
+        {/* Back glow layer */}
         <div
           className="absolute inset-0 rounded-full blur-3xl opacity-60"
           style={{
@@ -102,15 +187,32 @@ const ShieldLogo3D = () => {
           }}
         />
 
-        {/* Logo image */}
+        {/* Logo image - front face */}
         <img
           src={LOGO_URL}
           alt="Gloss Kings Auto Detailing"
-          className="relative block w-[300px] sm:w-[380px] md:w-[440px] lg:w-[500px] h-auto select-none pointer-events-none"
+          className="relative block w-[300px] sm:w-[380px] md:w-[440px] lg:w-[500px] h-auto pointer-events-none"
           style={{
             transform: "translateZ(40px)",
             filter:
               "drop-shadow(0 20px 40px rgba(0,0,0,0.7)) drop-shadow(0 0 25px rgba(212,175,55,0.35))",
+            backfaceVisibility: "hidden",
+          }}
+          draggable="false"
+        />
+
+        {/* Back face - mirrored logo (shows when spun around) */}
+        <img
+          src={LOGO_URL}
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 block w-[300px] sm:w-[380px] md:w-[440px] lg:w-[500px] h-auto pointer-events-none"
+          style={{
+            transform: "translateZ(-40px) rotateY(180deg)",
+            filter:
+              "drop-shadow(0 20px 40px rgba(0,0,0,0.7)) drop-shadow(0 0 25px rgba(212,175,55,0.25)) brightness(0.85)",
+            backfaceVisibility: "hidden",
+            opacity: 0.92,
           }}
           draggable="false"
         />
@@ -129,7 +231,7 @@ const ShieldLogo3D = () => {
             }}
           />
         </div>
-      </motion.div>
+      </div>
 
       {/* Reflection floor */}
       <div className="reflection-floor" />

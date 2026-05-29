@@ -9,12 +9,13 @@ const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
 const SERVICES = [
-  "Ceramic Coating",
-  "Paint Correction",
-  "Exterior Detail",
-  "Interior Deep Clean",
-  "Steam & Leather Care",
-  "The King's Package",
+  "Basic Wash & Vac",
+  "Mini Detail",
+  "Standard Detail",
+  "Executive Detail",
+  "Ceramic Spray Coating (Add-on)",
+  "Engine Bay Cleaning (Add-on)",
+  "Pet Hair Removal (Add-on)",
   "Not sure — recommend one",
 ];
 

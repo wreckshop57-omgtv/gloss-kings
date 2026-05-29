@@ -5,6 +5,7 @@ import { TEST_IDS } from "@/constants/testIds";
 
 const links = [
   { id: "services", label: "Services", testid: TEST_IDS.nav.linkServices },
+  { id: "pricing", label: "Pricing", testid: TEST_IDS.nav.linkPricing },
   { id: "process", label: "Process", testid: TEST_IDS.nav.linkProcess },
   { id: "gallery", label: "Gallery", testid: TEST_IDS.nav.linkGallery },
   { id: "contact", label: "Contact", testid: TEST_IDS.nav.linkContact },
