@@ -23,6 +23,7 @@ export const TEST_IDS = {
     card: (key) => `service-card-${key}`,
   },
   process: { section: 'process-section' },
+  follow: { section: 'follow-section', cta: 'follow-instagram-cta' },
   pricing: {
     section: 'pricing-section',
     vehicleToggle: 'pricing-vehicle-toggle',

@@ -13,12 +13,8 @@ const SERVICES = [
   "Mini Detail",
   "Standard Detail",
   "Executive Detail",
-  "Ceramic Spray Coating (Add-on)",
-  "Engine Bay Cleaning (Add-on)",
-  "Pet Hair Removal (Add-on)",
-  "Not sure — recommend one",
+  "Not Sure - Recommend One",
 ];
-
 export default function QuoteForm() {
   const [form, setForm] = useState({
     name: "",

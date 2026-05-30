@@ -96,14 +96,16 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Hours */}
+          {/* Appointment notice */}
           <div>
             <h4 className="text-[0.7rem] tracking-[0.3em] uppercase text-[#D4AF37] mb-5 gold-underline inline-block">
-              Hours
+              By Appointment
             </h4>
-            <ul className="space-y-3 text-sm text-white/70">
-              <li className="flex justify-between"><span>Services are provided by appointment ONLY.</span></li>
-            </ul>
+            <p className="text-sm text-white/70 leading-relaxed">
+              Services are provided by{" "}
+              <span className="text-white font-semibold">appointment ONLY</span>.
+              Reach out via text, email, or DM to schedule your detail.
+            </p>
             <p className="mt-6 text-[0.7rem] tracking-[0.2em] uppercase text-white/40">
               Mobile service available
             </p>

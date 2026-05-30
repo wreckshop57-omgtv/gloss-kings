@@ -16,17 +16,6 @@ const SERVICES = [
     bullets: ["Multi-year hydrophobic protection", "UV & chemical resistant", "Showroom mirror finish"],
   },
   {
-    key: "paint-correction",
-    title: "Paint Correction",
-    tag: "Exterior",
-    icon: Wand2,
-    image:
-      "https://static.prod-images.emergentagent.com/jobs/73674b8e-f3bf-40a4-ac5d-79e1db85f935/images/739a90e6a73ce9a7f0d0df006e5e0df393f242a7b9e4092889b65da009c67425.png",
-    description:
-      "Multi-stage machine polishing that removes swirls, holograms, oxidation, and light scratches to restore factory clarity.",
-    bullets: ["Swirl & scratch removal", "Depth & gloss restored", "Pre-coating prep"],
-  },
-  {
     key: "exterior-detail",
     title: "Exterior Detail",
     tag: "Exterior",
@@ -47,28 +36,6 @@ const SERVICES = [
     description:
       "Hot-water extraction, hand-scrubbed carpets, headliner refresh, and every crevice vacuumed. The factory feeling — restored.",
     bullets: ["Extraction-grade shampoo", "Headliner & vents", "Pet hair removal"],
-  },
-  {
-    key: "steam-leather",
-    title: "Steam & Leather Care",
-    tag: "Interior",
-    icon: Wind,
-    image:
-      "https://images.unsplash.com/photo-1608259243654-70c070e0f6ed?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2OTV8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBjYXIlMjBpbnRlcmlvciUyMGxlYXRoZXIlMjBjbGVhbnxlbnwwfHx8fDE3ODAwMTI4NTJ8MA&ixlib=rb-4.1.0&q=85",
-    description:
-      "Pharma-grade steam sanitation, pH-neutral leather cleaner and conditioner — soft, breathable, and protected from cracking.",
-    bullets: ["180°F antibacterial steam", "Leather conditioning", "UV interior protection"],
-  },
-  {
-    key: "the-king",
-    title: "The King's Package",
-    tag: "Signature",
-    icon: Sparkles,
-    image:
-      "https://static.prod-images.emergentagent.com/jobs/73674b8e-f3bf-40a4-ac5d-79e1db85f935/images/25cfa1f0027dceeb736478bff1b1541f0a4838a877718c71151f3327af385bf2.png",
-    description:
-      "Our flagship treatment. Full paint correction, two-layer ceramic coat, interior steam, and leather restoration — the throne.",
-    bullets: ["Multi-stage correction", "2-layer ceramic", "Full interior reset"],
   },
 ];
 

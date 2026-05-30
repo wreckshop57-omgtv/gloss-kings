@@ -3,8 +3,7 @@ import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
 import Pricing from "@/components/Pricing";
-import Process from "@/components/Process";
-import Gallery from "@/components/Gallery";
+import FollowUs from "@/components/FollowUs";
 import Testimonials from "@/components/Testimonials";
 import QuoteForm from "@/components/QuoteForm";
 import Footer from "@/components/Footer";
@@ -16,8 +15,7 @@ export default function Landing() {
       <Hero />
       <Services />
       <Pricing />
-      <Process />
-      <Gallery />
+      <FollowUs />
       <Testimonials />
       <QuoteForm />
       <Footer />
