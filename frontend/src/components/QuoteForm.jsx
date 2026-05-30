@@ -96,7 +96,7 @@ export default function QuoteForm() {
             </div>
             <div className="flex items-start gap-3">
               <Check className="w-4 h-4 text-[#D4AF37] mt-1 shrink-0" />
-              <span className="text-white/70">Mobile or in-shop service options</span>
+              <span className="text-white/70">Mobile Service — <span className="text-white">"We come to you."</span></span>
             </div>
             <div className="flex items-start gap-3">
               <Check className="w-4 h-4 text-[#D4AF37] mt-1 shrink-0" />
