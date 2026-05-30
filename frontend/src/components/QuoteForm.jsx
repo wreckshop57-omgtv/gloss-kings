@@ -82,7 +82,7 @@ export default function QuoteForm() {
           </div>
           <h2 className="font-serif-display text-4xl sm:text-5xl lg:text-6xl tracking-tight">
             <span className="text-chrome">Tell us about</span>{" "}
-            <span className="text-gold">your ride.</span>
+            <span data-text="your ride." className="text-gloss">your ride.</span>
           </h2>
           <p className="mt-6 text-white/60 text-lg max-w-md leading-relaxed">
             Drop a few details. We'll respond within 24 hours with a tailored

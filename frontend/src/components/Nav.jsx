@@ -46,7 +46,7 @@ export default function Nav() {
           <Crown className="w-5 h-5 text-[#D4AF37] group-hover:text-[#FFE07A] transition" strokeWidth={2.2} />
           <span className="font-sans-display tracking-[0.25em] text-[0.78rem] uppercase">
             <span className="text-chrome">Gloss</span>{" "}
-            <span className="text-gold">Kings</span>
+            <span data-text="Kings" className="text-gloss">Kings</span>
           </span>
         </button>
 

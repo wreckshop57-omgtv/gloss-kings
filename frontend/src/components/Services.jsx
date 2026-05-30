@@ -67,7 +67,7 @@ export default function Services() {
             <span>Services</span>
           </div>
           <h2 className="font-serif-display text-4xl sm:text-5xl lg:text-6xl tracking-tight text-chrome">
-            Treatments worthy of <span className="text-gold">the crown</span>.
+            Treatments worthy of <span data-text="the crown" className="text-gloss">the crown</span>.
           </h2>
           <p className="mt-6 text-white/60 text-lg max-w-2xl">
             Every package is hand-tailored to your vehicle, your paintwork, and

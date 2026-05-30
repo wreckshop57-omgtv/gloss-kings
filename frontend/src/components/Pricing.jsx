@@ -119,7 +119,7 @@ export default function Pricing() {
             </div>
             <h2 className="font-serif-display text-4xl sm:text-5xl lg:text-6xl tracking-tight">
               <span className="text-chrome">Choose your</span>{" "}
-              <span className="text-gold">coronation.</span>
+              <span data-text="coronation." className="text-gloss">coronation.</span>
             </h2>
           </div>
           <p className="text-white/55 text-lg max-w-md lg:justify-self-end">

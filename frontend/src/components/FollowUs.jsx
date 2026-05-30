@@ -54,7 +54,7 @@ export default function FollowUs() {
             </div>
             <h2 className="font-serif-display text-4xl sm:text-5xl lg:text-6xl tracking-tight">
               <span className="text-chrome">See the gloss,</span>{" "}
-              <span className="text-gold">live on the gram.</span>
+              <span data-text="live on the gram." className="text-gloss">live on the gram.</span>
             </h2>
           </div>
           <div className="lg:justify-self-end">

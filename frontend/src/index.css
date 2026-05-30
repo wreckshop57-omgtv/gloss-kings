@@ -85,7 +85,48 @@ body {
 
 .text-gold-solid { color: var(--gold); }
 
-/* Gold light sweep across letters */
+/* Animated chrome gloss text — applied to brand/heading accent words.
+   Renders a base gold gradient + a periodic white shine sweeping across the
+   letters. Use as: <span class="text-gloss">your ride</span> */
+.text-gloss {
+  position: relative;
+  display: inline-block;
+  background: linear-gradient(180deg, #FFE17A 0%, #D4AF37 45%, #8B6914 65%, #FFD700 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+.text-gloss::before {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    transparent 0%,
+    transparent 38%,
+    rgba(255, 255, 255, 0.05) 45%,
+    rgba(255, 255, 255, 0.95) 50%,
+    rgba(255, 255, 255, 0.05) 55%,
+    transparent 62%,
+    transparent 100%
+  );
+  background-size: 250% 100%;
+  background-position: 200% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: textGloss 4.5s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes textGloss {
+  0%   { background-position: 200% 0; }
+  55%  { background-position: -100% 0; }
+  100% { background-position: -100% 0; }
+}
+
+/* Legacy class kept as alias */
 .gold-sweep {
   position: relative;
   display: inline-block;

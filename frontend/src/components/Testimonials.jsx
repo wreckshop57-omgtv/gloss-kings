@@ -46,7 +46,7 @@ export default function Testimonials() {
           </div>
           <h2 className="font-serif-display text-4xl sm:text-5xl lg:text-6xl tracking-tight">
             <span className="text-chrome">Words from</span>{" "}
-            <span className="text-gold">the loyal.</span>
+            <span data-text="the loyal." className="text-gloss">the loyal.</span>
           </h2>
         </motion.div>
 

@@ -78,7 +78,7 @@ export default function Hero() {
           >
             <span className="block text-chrome">A Throne For</span>
             <span className="block">
-              <span className="text-gold gold-sweep">Every Vehicle.</span>
+              <span data-text="Every Vehicle." className="text-gloss">Every Vehicle.</span>
             </span>
           </motion.h1>
 

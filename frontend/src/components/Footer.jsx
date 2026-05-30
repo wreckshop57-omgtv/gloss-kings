@@ -18,7 +18,7 @@ export default function Footer() {
               <Crown className="w-6 h-6 text-[#D4AF37]" />
               <span className="font-sans-display tracking-[0.25em] uppercase text-sm">
                 <span className="text-chrome">Gloss</span>{" "}
-                <span className="text-gold">Kings</span>
+                <span data-text="Kings" className="text-gloss">Kings</span>
               </span>
             </div>
             <p className="text-white/50 leading-relaxed max-w-md">
