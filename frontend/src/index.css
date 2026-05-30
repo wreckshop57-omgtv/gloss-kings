@@ -117,13 +117,12 @@ body {
   background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
-  animation: textGloss 4.5s ease-in-out infinite;
+  animation: textGloss 6s linear infinite;
   pointer-events: none;
 }
 @keyframes textGloss {
-  0%   { background-position: 200% 0; }
-  55%  { background-position: -100% 0; }
-  100% { background-position: -100% 0; }
+  0%   { background-position: 250% 0; }
+  100% { background-position: -150% 0; }
 }
 
 /* Legacy class kept as alias */
